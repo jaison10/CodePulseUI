@@ -1,7 +1,7 @@
 <div class="tableouter">
     <section class="header-input">
       <div class="section_header">
-        <h1>STUDENTS</h1>
+        <h1>CATEGORIES</h1>
       </div>
       <div class="newbutton-textbox">
         <div class="addnew-button">
@@ -13,4 +13,20 @@
         </div>
       </div>
     </section>
+    <section class="section_table" *ngIf="allCategories">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>URL Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let category of allCategories">
+          <td>{{category.name}}</td>
+          <td>{{category.urlHandle}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 </div>

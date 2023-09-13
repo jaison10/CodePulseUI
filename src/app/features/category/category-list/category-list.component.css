@@ -42,3 +42,32 @@
 }
 
 
+
+.section_table{
+    width: 90%;
+    overflow: scroll;
+    max-height: 32.5rem;
+    margin: auto;
+}
+
+.section_table::-webkit-scrollbar{
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.section_table::-webkit-scrollbar-thumb{
+    border-radius: 0.5rem;
+    background-color: rgb(60, 64, 63);
+    visibility: hidden;
+}
+
+.section_table:hover::-webkit-scrollbar-thumb{
+    visibility: visible;
+}
+
+table{
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+

@@ -1,5 +1,5 @@
 export interface Category{
-    Id: String,
-    Name : String,
-    UrlHandle : String
+    id: String,
+    name : String,
+    urlHandle : String
 }
