@@ -1,16 +1,22 @@
 <div class="tableouter">
     <section class="header-input">
       <div class="section_header">
-        <h1>CATEGORIES</h1>
+        <h1>Blogs</h1>
       </div>
       <div class="newbutton-textbox">
         <div class="addnew-button">
-            <button [routerLink]="['add']" mat-raised-button color="basic" class="">Add Category</button>
+            <button [routerLink]="['/admin/blogs/add']" mat-raised-button color="basic" class="">Add New Blog</button>
         </div>
         <div class="textbox-outer">
           <!-- <input type="text" [(ngModel)]="filterString" (keyup)="filterSudent()"> -->
           <!-- <span>search string</span> -->
         </div>
+      </div>
+    </section>
+    <section *ngIf="blogs" class="blog-list">
+      <div class="blog" *ngFor="let blog of blogs">
+        <span class="blog-title">{{blog?.title}}</span>
+        <span class="blog-shortdesc">{{blog?.shortDesc}}</span>    
       </div>
     </section>
 </div>

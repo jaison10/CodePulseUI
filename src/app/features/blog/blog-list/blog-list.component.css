@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&family=Poppins:wght@200;300;400;500&display=swap');
+
+.tableouter{
+    background-color: #fff5;
+    width: 70%;
+    margin: auto;
+    backdrop-filter: blur(7px);
+    box-shadow: 0 0.4rem .8rem #0005;
+    border-radius: .8rem;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 10px;
+}
+
+.section_header h1{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight : 500;
+}
+
+.header-input{
+    display: flex; /*items in a row.*/
+    align-items: center; /*In the middle from top and bottom*/
+    justify-content: space-between; /*space-between makes items have a gap and if there are 2 items - one will be on left & the other on right*/
+    width: 90%;
+    margin: auto;
+    background-color: #fff;
+    padding-top: 5px;
+}
+
+.newbutton-textbox{
+    display: flex;
+    width: auto;
+}
+
+.addnew-button{
+    padding-top: 10px;
+    padding-right: 5px ;
+}
+
+.blog-list{
+    width: 90%;
+    overflow: scroll;
+    max-height: 32.5rem;
+    margin: auto;
+}
+
+.blog{
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(7px);
+    box-shadow: 0 0.4rem .8rem #0005;
+    border-radius: .8rem;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.blog-title{
+    font-size: 20px;
+    font-weight : 500;
+}
+
+.blog-shortdesc{
+    font-size: 15px;
+    padding-top: 5px;
+}
