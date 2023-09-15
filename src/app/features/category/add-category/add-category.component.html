@@ -12,7 +12,7 @@
             </mat-form-field> -->
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Category Name</span>
-                <input [(ngModel)]="category.Name" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                <input [(ngModel)]="category.name" type="text" class="form-control" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
             </div>
         </div>
         <div class="form-rows">
@@ -24,9 +24,10 @@
             </mat-form-field> -->
             <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Category URL Handle</span>
-                <input required [(ngModel)]="category.UrlHandle" type="text" class="form-control">
+                <input required [(ngModel)]="category.urlHandle" type="text" class="form-control">
             </div>
         </div>
         <button class="btn btn-success" (click)="AddCategory()">Save Details</button>
+        <!-- <button class="btn btn-failure" (click)="AddCategory()">Save Details</button> -->
     </div>
 </div>

@@ -54,13 +54,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BlogListComponent } from './features/blog/blog-list/blog-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopNavComponent,
     CategoryListComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    BlogListComponent
   ],
   imports: [
     BrowserModule,

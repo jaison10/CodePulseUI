@@ -13,21 +13,4 @@
         </div>
       </div>
     </section>
-    <section class="section_table" *ngIf="categories$ | async as allCategories">
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>URL Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let category of allCategories">
-          <td>{{category.name}}</td>
-          <td>{{category.urlHandle}}</td>
-          <td><a [routerLink]="['/admin/categories', category.id]">Edit</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
 </div>
