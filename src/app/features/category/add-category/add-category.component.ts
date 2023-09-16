@@ -31,6 +31,8 @@ export class AddCategoryComponent implements OnInit,OnDestroy {
   ngOnInit(): void {
     this.routes.paramMap.subscribe((params)=>{
       var Id = params.get("Id"); 
+      console.log("ID : ", Id);
+      
       if(Id){
           this.CategoryService.CategoryDetails(Id).subscribe((category)=>{
             this.category = category;

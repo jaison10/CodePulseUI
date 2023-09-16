@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Blog } from './models/blog-model';
 import { Observable } from 'rxjs';
+import { UpdateBlog } from './models/update-blog.model';
+import { CreateBlog } from './models/create-blog-model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +16,33 @@ export class BlogsService {
 
   GetAllPosts():Observable<Blog[]>{
     return this.httpClient.get<Blog[]>(this.httpURL + "/Blog");
+  }
+  GetBlogById(blogId : String):Observable<Blog>{
+    return this.httpClient.get<Blog>(this.httpURL + "/Blog/" + blogId);
+  }
+  UpdateBlog(blogId:String,  blog : Blog):Observable<Blog>{
+    var updateData : UpdateBlog = {
+      title :blog.title,
+      shortDesc : blog.shortDesc,
+      content : blog.content,
+      featuredImgURL : blog.featuredImgURL,
+      urlHandle : blog.urlHandle,
+      author :blog.author,
+      isVisible : blog.isVisible
+    }
+    return this.httpClient.put<Blog>(this.httpURL + "/Blog/" + blogId, updateData);
+  }
+  CreateBlog(blog: Blog){
+    var createData : CreateBlog = {
+      title :blog.title,
+      shortDesc : blog.shortDesc,
+      publishedDate : blog.publishedDate,
+      content : blog.content,
+      featuredImgURL : blog.featuredImgURL,
+      urlHandle : blog.urlHandle,
+      author :blog.author,
+      isVisible : blog.isVisible
+    }
+    return this.httpClient.post<Blog>(this.httpURL + "/Blog", createData);
   }
 }
