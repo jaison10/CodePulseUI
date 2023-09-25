@@ -26,7 +26,6 @@ import { MarkdownModule } from 'ngx-markdown';
     AddEditBlogComponent
   ],
   imports: [
-    MarkdownModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
