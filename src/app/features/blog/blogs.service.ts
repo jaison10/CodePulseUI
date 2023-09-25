@@ -15,7 +15,7 @@ export class BlogsService {
   constructor(private httpClient : HttpClient) { }
 
   GetAllPosts():Observable<Blog[]>{
-    return this.httpClient.get<Blog[]>(this.httpURL + "/Blog");
+    return this.httpClient.get<Blog[]>(this.httpURL + "/Blog?page=1");
   }
   GetBlogById(blogId : String):Observable<Blog>{
     return this.httpClient.get<Blog>(this.httpURL + "/Blog/" + blogId);
