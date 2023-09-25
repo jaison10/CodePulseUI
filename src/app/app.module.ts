@@ -67,6 +67,7 @@ import { AddEditBlogComponent } from './features/blog/add-edit-blog/add-edit-blo
     AddEditBlogComponent
   ],
   imports: [
+    MarkdownModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
