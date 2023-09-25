@@ -15,7 +15,7 @@ export class BlogsService {
   constructor(private httpClient : HttpClient) { }
 
   GetAllPosts():Observable<Blog[]>{
-    return this.httpClient.get<Blog[]>(this.httpURL + "/Blog/?page=1");
+    return this.httpClient.get<Blog[]>(this.httpURL + "/Blog");
   }
   GetBlogById(blogId : String):Observable<Blog>{
     return this.httpClient.get<Blog>(this.httpURL + "/Blog/" + blogId);
@@ -32,7 +32,7 @@ export class BlogsService {
     }
     return this.httpClient.put<Blog>(this.httpURL + "/Blog/" + blogId, updateData);
   }
-  CreateBlog(blog: Blog):Observable<Blog>{
+  CreateBlog(blog: Blog){
     var createData : CreateBlog = {
       title :blog.title,
       shortDesc : blog.shortDesc,
@@ -44,8 +44,5 @@ export class BlogsService {
       isVisible : blog.isVisible
     }
     return this.httpClient.post<Blog>(this.httpURL + "/Blog", createData);
-  }
-  DeleteCategory(blogId : String):Observable<Blog>{
-    return this.httpClient.delete<Blog>(this.httpURL + "/Blog/" + blogId);
   }
 }
