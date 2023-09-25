@@ -26,12 +26,14 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
   private existingBlog : boolean = false;
   private createSubscription ?: Subscription;
   private updateSubscription ?: Subscription;
+  private deleteSubscription ?: Subscription;
 
   constructor(private routes : ActivatedRoute, private blogService : BlogsService, private router : Router) { }
 
   ngOnDestroy(): void {
     this.createSubscription?.unsubscribe();
     this.updateSubscription?.unsubscribe();
+    this.deleteSubscription?.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -68,5 +70,12 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
         console.log("Error on creating : ", error);
       });
     }
+  }
+  DeleteCategory(){
+    this.deleteSubscription = this.blogService.DeleteCategory(this.blog.id).subscribe((blog)=>{
+      this.router.navigateByUrl('/admin/blogs');
+    },(error)=>{
+      console.log("Error on deleting : ", error);
+    });
   }
 }
