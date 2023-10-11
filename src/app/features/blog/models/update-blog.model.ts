@@ -7,5 +7,5 @@ export interface UpdateBlog{
     urlHandle : String,
     author :String,
     isVisible : Boolean,
-    // Categories : Category[]
+    categoryIDs : String[]
 }

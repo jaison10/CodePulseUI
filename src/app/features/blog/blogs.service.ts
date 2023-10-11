@@ -28,8 +28,14 @@ export class BlogsService {
       featuredImgURL : blog.featuredImgURL,
       urlHandle : blog.urlHandle,
       author :blog.author,
-      isVisible : blog.isVisible
+      isVisible : blog.isVisible,
+      categoryIDs : []
     }
+    blog.categories.forEach(blog => {
+      updateData.categoryIDs.push(blog.id);  
+    });
+    console.log("Updating data in Service : ", updateData);
+    
     return this.httpClient.put<Blog>(this.httpURL + "/Blog/" + blogId, updateData);
   }
   CreateBlog(blog: Blog){
@@ -41,8 +47,13 @@ export class BlogsService {
       featuredImgURL : blog.featuredImgURL,
       urlHandle : blog.urlHandle,
       author :blog.author,
-      isVisible : blog.isVisible
+      isVisible : blog.isVisible,
+      categoryIDs : []
     }
+    
+    blog.categories.forEach(cat => {
+      createData.categoryIDs.push(cat.id);  
+    });
     return this.httpClient.post<Blog>(this.httpURL + "/Blog", createData);
   }
 }

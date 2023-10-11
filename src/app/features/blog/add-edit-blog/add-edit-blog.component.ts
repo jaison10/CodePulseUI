@@ -24,13 +24,12 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
     'publishedDate' : new Date(),
     'author' : '',
     'isVisible' : false,
-    'Categories' : []
+    'categories' : []
   }
   private existingBlog : boolean = false;
   private createSubscription ?: Subscription;
   private updateSubscription ?: Subscription;
   categories : Category[] = [];
-  selectedCats : Category[] = [];
 
   constructor(private routes : ActivatedRoute, 
     private blogService : BlogsService, 
@@ -46,28 +45,34 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
     this.routes.paramMap.subscribe((params)=>{
       var IdFromURL = params.get("Id");
       console.log("ID : ", IdFromURL) ;
-      
-      this.categoryService.GetAllCategories().subscribe((categories)=>{
-        this.categories = categories;
-      },(error)=>{
-        console.log("ERROR! : ", error);
-      })
 
       if(IdFromURL != null && IdFromURL != "add"){
         this.blogService.GetBlogById(IdFromURL).subscribe((blog)=>{
           this.blog = blog;
           this.existingBlog = true;
           console.log("Blog Details : ", this.blog);
-          
+          console.log("Categories afte blog loaded ", this.blog.categories);
+          this.LoadCategories();
         },(error)=>{
           console.log("Error Occured : ", error);
         });
+      }else{
+        this.LoadCategories();
       }
     });
   }
 
+  LoadCategories(){
+    this.categoryService.GetAllCategories().subscribe((categories)=>{
+      console.log("Loading Categories......");
+      this.categories = categories;
+      console.log("Loaded Categories......", this.categories);
+    },(error)=>{
+      console.log("ERROR! : ", error);
+    })
+  }
+
   updateDetails(){
-    console.log("Updating data : ", this.blog);
     if(this.existingBlog){
       this.updateSubscription = this.blogService.UpdateBlog(this.blog.id, this.blog).subscribe((blog)=>{
         this.blog = blog;
@@ -87,15 +92,16 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
 
   toggleCategorySelection(category: Category): void {
     if (this.isSelected(category)) {
-      this.selectedCats = this.selectedCats.filter(c => c !== category);
-      console.log("SELECTED CATS: ", this.selectedCats);
-      
+      this.blog.categories = this.blog.categories.filter(c=> c !== category);  
+      console.log("NEW Blog : ", this.blog);
     } else {
-      this.selectedCats.push(category);
+      this.blog.categories.push(category);
+      console.log("NEW Blog : ", this.blog);
+      
     }
   }
 
-  isSelected(category: Category): boolean {
-    return this.selectedCats.includes(category);
+  isSelected(category: Category): boolean {   
+    return this.blog.categories.some(obj => JSON.stringify(obj) === JSON.stringify(category));
   }
 }

@@ -53,6 +53,7 @@
                   </div>
             </div>
             <div class="col col-md-6 mb-3">
+                <label>Categories</label>
                 <div *ngFor="let category of categories">
                     <label>
                         <input type="checkbox" [checked]="isSelected(category)" (change)="toggleCategorySelection(category)"> 

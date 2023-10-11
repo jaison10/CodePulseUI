@@ -8,5 +8,5 @@ export interface CreateBlog{
     urlHandle : String,
     author :String,
     isVisible : Boolean
-    // Categories : Category[]
+    categoryIDs : String[]
 }

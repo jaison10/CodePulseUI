@@ -10,5 +10,5 @@ export interface Blog{
     publishedDate : Date,
     author :String,
     isVisible : Boolean,
-    Categories : Category[]
+    categories : Category[]
 }
