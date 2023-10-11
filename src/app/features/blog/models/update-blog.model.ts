@@ -1,3 +1,4 @@
+import { Category } from "src/app/models/category-model"
 export interface UpdateBlog{
     title :String,
     shortDesc : String,
@@ -5,5 +6,6 @@ export interface UpdateBlog{
     featuredImgURL : String,
     urlHandle : String,
     author :String,
-    isVisible : Boolean
+    isVisible : Boolean,
+    // Categories : Category[]
 }

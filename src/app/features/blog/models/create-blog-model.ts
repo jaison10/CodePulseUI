@@ -1,3 +1,4 @@
+import { Category } from "src/app/models/category-model"
 export interface CreateBlog{
     title :String,
     shortDesc : String,
@@ -7,4 +8,5 @@ export interface CreateBlog{
     urlHandle : String,
     author :String,
     isVisible : Boolean
+    // Categories : Category[]
 }
