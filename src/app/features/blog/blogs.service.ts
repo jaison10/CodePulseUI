@@ -20,6 +20,9 @@ export class BlogsService {
   GetBlogById(blogId : String):Observable<Blog>{
     return this.httpClient.get<Blog>(this.httpURL + "/Blog/" + blogId);
   }
+  GetBlogByUrlHandle(urlHandle : String):Observable<Blog>{
+    return this.httpClient.get<Blog>(this.httpURL + "/Blog/" + urlHandle);
+  }
   UpdateBlog(blogId:String,  blog : Blog):Observable<Blog>{
     var updateData : UpdateBlog = {
       title :blog.title,
@@ -55,5 +58,8 @@ export class BlogsService {
       createData.categoryIDs.push(cat.id);  
     });
     return this.httpClient.post<Blog>(this.httpURL + "/Blog", createData);
+  }
+  DeleteBlog(blogId : String):Observable<Blog>{
+    return this.httpClient.delete<Blog>(this.httpURL + "/Blog/" + blogId);
   }
 }

@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { BlogListComponent } from './features/blog/blog-list/blog-list.component';
 import { AddEditBlogComponent } from './features/blog/add-edit-blog/add-edit-blog.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { HomeComponent } from './features/public/home/home.component';
+import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { MarkdownModule } from 'ngx-markdown';
     AddCategoryComponent,
     BlogListComponent,
     AddEditBlogComponent,
+    HomeComponent,
+    BlogDetailsComponent,
   ],
   imports: [
     BrowserModule,

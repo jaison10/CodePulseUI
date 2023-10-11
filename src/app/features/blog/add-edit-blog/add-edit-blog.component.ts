@@ -1,8 +1,7 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import { Blog } from '../models/blog-model';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { BlogsService } from '../blogs.service';
-import { error } from 'console';
 import { Subscription } from 'rxjs';
 import { Category } from 'src/app/models/category-model';
 import { CategoryService } from '../../category/category-service.service';
@@ -26,7 +25,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
     'isVisible' : false,
     'categories' : []
   }
-  private existingBlog : boolean = false;
+  existingBlog : boolean = false;
   private createSubscription ?: Subscription;
   private updateSubscription ?: Subscription;
   categories : Category[] = [];
@@ -90,6 +89,18 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
     }
   }
 
+  DeleteBlog(){
+    console.log("going to delete");
+    
+    if(this.existingBlog){
+      this.blogService.DeleteBlog(this.blog.id).subscribe((blog)=>{
+        this.router.navigateByUrl('/admin/blogs');
+      },(error)=>{
+        console.log("Error occured while deleting a blog : ", error);
+      });
+    }
+  }
+
   toggleCategorySelection(category: Category): void {
     if (this.isSelected(category)) {
       this.blog.categories = this.blog.categories.filter(c=> c !== category);  
@@ -104,4 +115,5 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
   isSelected(category: Category): boolean {   
     return this.blog.categories.some(obj => JSON.stringify(obj) === JSON.stringify(category));
   }
+
 }

@@ -63,5 +63,6 @@
             </div>
         </div>
         <button type="submit" class="btn btn-success">Save Details</button>
+        <button type="button" *ngIf="existingBlog" class="btn btn-danger" (onclick)="DeleteBlog()">Delete</button>
       </form>
 </div>
